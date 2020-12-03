@@ -22,7 +22,12 @@ function gettingJSON(){
     let query = "https://api.openweathermap.org/data/2.5/weather?";
     // Your code here.  
     if (/\d/.test(parseInt(Array.from(location)[0]), 10)) {
-        query += "zip=" + location;
+        if (/\s/.test(location)) {
+            query += "zip=" + location.split(" ")[0] + location.split(" ")[1];
+        }
+        else {
+            query += "zip=" + location;
+        }
     }
 
     else {
